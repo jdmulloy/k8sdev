@@ -1,0 +1,6 @@
+ingress:
+  enabled: true
+  host: k8s.spinnaker
+ingressGate:
+  enabled: true
+  host: k8s.spinnaker

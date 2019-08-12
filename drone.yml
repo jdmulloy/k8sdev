@@ -1,0 +1,5 @@
+ingress:
+  enabled: true
+  hosts:
+    - k8s.local
+  path: /drone
