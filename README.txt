@@ -22,7 +22,7 @@ helm install stable/kubernetes-dashboard --name kubernetes-dashboard -f dashboar
 navigate to k8s.dashboard
 
 PROMETHEUS(WIP)
-helm install --name prometheus stable/prometheus
+helm install --name prometheus stable/prometheus -f prometheus.yml
 
 GRAPHANA(WIP)
 helm install --name graphana stable/graphana
@@ -45,6 +45,7 @@ navigate to k8s.spinnaker
 
 EXTRAS
 helm upgrade jenkins stable/jenkins -f jenkins.yml
+helm upgrade prometheus stable/prometheus -f prometheus.yml
 kubectl -n default port-forward svc/kubernetes-dashboard 8443:443
 kubectl -n default port-forward svc/jenkins 8080:8080
 minikube service jenkins --url
