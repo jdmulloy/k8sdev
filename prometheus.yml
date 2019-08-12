@@ -1,0 +1,15 @@
+server:
+  ingress:
+    enabled: true
+    hosts: 
+      - k8s.prometheus.server
+alertmanager:
+  ingress:
+    enabled: true
+    hosts: 
+      - k8s.prometheus.alertmanager
+pushgateway:
+  ingress:
+    enabled: true
+    hosts: 
+      - k8s.prometheus.pushgateway
