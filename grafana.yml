@@ -36,6 +36,7 @@ dashboards:
       gnetId: 10645
       revision: 1
       datasource: Prometheus
-    
+plugins: 
+  - grafana-piechart-panel
 adminUser: admin
 adminPassword: admin
