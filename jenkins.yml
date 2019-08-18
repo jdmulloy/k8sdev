@@ -3,6 +3,7 @@ master:
   fsGroup: 1000 # dont run Jenkins as root
   adminUser: "admin"
   adminPassword: admin
+  javaOpts: '-Xmx512m -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85'
   jenkinsUrl: "http://k8s.local/jenkins"
   jenkinsUriPrefix: "/jenkins"
   ingress:
