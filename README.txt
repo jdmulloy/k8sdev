@@ -60,7 +60,7 @@ helm install --name my-release stable/drone -f drone.yml
 navigate to k8s.local/drone
 
 GOCD
-helm install --name gocd-app --namespace gocd stable/gocd -f gocd.yml
+helm install --name gocd stable/gocd -f gocd.yml
 navigate to k8s.gocd
 
 SPINNAKER
