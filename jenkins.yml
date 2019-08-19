@@ -68,8 +68,14 @@ master:
                       scm('H/15 * * * *')
                   }
                   steps {
+                      systemGroovyScriptFile('Folders.groovy')) {
+                          binding('computerName', 'ubuntu-04')
+                      }
+                      systemGroovyScriptFile('Secrets.groovy')) {
+                          binding('computerName', 'ubuntu-04')
+                      }
                       dsl {
-                          external('*.groovy')
+                          external('jobs/*.groovy')
                           removeAction('DELETE')
                       }
                   }
