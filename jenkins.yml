@@ -39,6 +39,7 @@ master:
     # if you update this, update plugin version below
     - configuration-as-code:1.27
     - blueocean:1.18.1
+    - groovy:2.2
   JCasC:
     enabled: true
     # configuration-as-code version from above
@@ -68,11 +69,9 @@ master:
                       scm('H/15 * * * *')
                   }
                   steps {
-                      systemGroovyScriptFile('Folders.groovy')) {
-                          binding('computerName', 'ubuntu-04')
+                      systemGroovyScriptFile('Folders.groovy') {
                       }
-                      systemGroovyScriptFile('Secrets.groovy')) {
-                          binding('computerName', 'ubuntu-04')
+                      systemGroovyScriptFile('Secrets.groovy') {
                       }
                       dsl {
                           external('jobs/*.groovy')
