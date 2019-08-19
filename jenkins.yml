@@ -3,9 +3,19 @@ master:
   fsGroup: 1000 # dont run Jenkins as root
   adminUser: "admin"
   adminPassword: admin
-  javaOpts: '-Xmx512m -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85'
+
+  # The node provisioner args ensure Jenkins doesn't wait forever to start new agents. By default it leans toward preserving resources
+  # instead of spinning up new nodes.  Since we are running all our jobs in k8s we want it to spin them up quickly, and be less
+  # afraid of over provisioning.
+  javaOpts: '-Xmx512m -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85'
+  
   jenkinsUrl: "http://k8s.local/jenkins"
   jenkinsUriPrefix: "/jenkins"
+
+  # You still want some executors even if you aren't using them much. Remove this if you want to wait multiple minutes for your
+  # builds to start
+  numExecutors: 10 
+  
   ingress:
     enabled: true
     hostName: k8s.local
@@ -67,7 +77,7 @@ master:
 agent:
   enabled: true
   image: "jenkins/jnlp-slave"
-  tag: "3.29-1"
+  tag: "3.29-1-alpine"
   resources:
     requests:
       cpu: "200m"
