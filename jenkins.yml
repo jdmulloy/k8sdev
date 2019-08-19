@@ -56,9 +56,6 @@ master:
             globalConfigName: jenkins
             globalConfigEmail: jenkins@domain.local
             createAccountBasedOnEmail: false
-        security:
-          globalJobDslSecurityConfiguration:
-            useScriptSecurity: false
         jobs:
           - script: >
               job('Seed Job') {
@@ -69,16 +66,51 @@ master:
                       scm('H/15 * * * *')
                   }
                   steps {
-                      systemGroovyScriptFile('Folders.groovy') {
-                      }
-                      systemGroovyScriptFile('Secrets.groovy') {
-                      }
                       dsl {
-                          external('jobs/*.groovy')
+                          external('*.groovy')
                           removeAction('DELETE')
                       }
                   }
               }
+  initScripts:
+   - |
+         import com.cloudbees.plugins.credentials.impl.*;
+         import com.cloudbees.plugins.credentials.*;
+         import com.cloudbees.plugins.credentials.domains.*;
+         import com.cloudbees.hudson.plugins.folder.*
+         import org.jenkinsci.plugins.workflow.job.WorkflowJob
+         import jenkins.model.Jenkins
+
+
+         // FOLDERS
+         Jenkins jenkins = Jenkins.instance // saves some typing
+
+         if (jenkins.getItem("project-a") == null) {
+           // Create the folder if it doesn't exist or if no existing job has the same name
+           jenkins.createProject(Folder.class, "project-a")
+         }
+
+         if (jenkins.getItem("project-b") == null) {
+           // Create the folder if it doesn't exist or if no existing job has the same name
+           jenkins.createProject(Folder.class, "project-b")
+         }
+
+
+         // SECRETS
+         String keyfile = "/tmp/key"
+
+         Credentials c = (Credentials) new UsernamePasswordCredentialsImpl(CredentialsScope.GLOBAL,java.util.UUID.randomUUID().toString(), "description", "user", "password")
+
+
+         def ksm1 = new CertificateCredentialsImpl.FileOnMasterKeyStoreSource(keyfile)
+         Credentials ck1 = new CertificateCredentialsImpl(CredentialsScope.GLOBAL,java.util.UUID.randomUUID().toString(), "description", "password", ksm1)
+
+         def ksm2 = new CertificateCredentialsImpl.UploadedKeyStoreSource(keyfile)
+         Credentials ck2 = new CertificateCredentialsImpl(CredentialsScope.GLOBAL,java.util.UUID.randomUUID().toString(), "description", "password", ksm2)
+
+         SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), c)
+         SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), ck1)
+         SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), ck2)
 agent:
   enabled: true
   image: "jenkins/jnlp-slave"
