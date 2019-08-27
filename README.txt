@@ -47,7 +47,7 @@ PROMETHEUS
 helm install --name prometheus stable/prometheus -f prometheus.yml
 
 GRAFANA
-helm install --name grafana stable/grafana -f grafana
+helm install --name grafana stable/grafana -f grafana.yml
 admin/admin
 
 JENKINS
