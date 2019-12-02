@@ -67,6 +67,18 @@ SPINNAKER
 helm install --name spinnaker stable/spinnaker --timeout 600 -f spinnaker.yml
 navigate to k8s.spinnaker
 
+ARGO
+kubectl create namespace argo
+kubectl create rolebinding default-admin --clusterrole=admin --serviceaccount=default:default
+kubectl apply -n argo -f argo.yml          # pay attention to -n....
+
+argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
+argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/coinflip.yaml
+argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/loops-maps.yaml
+argo list
+argo get xxx-workflow-name-xxx
+argo logs xxx-pod-name-xxx #from get command above
+
 EXTRAS
 helm upgrade jenkins stable/jenkins -f jenkins.yml
 helm upgrade prometheus stable/prometheus -f prometheus.yml
