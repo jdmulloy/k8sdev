@@ -56,30 +56,86 @@ navigate to k8s.local/jenkins
 admin/admin
 
 DRONE
+
 helm install --name my-release stable/drone -f drone.yml
 navigate to k8s.local/drone
 
+
+
 GOCD
+
 helm install --name gocd stable/gocd -f gocd.yml
 navigate to k8s.gocd
 
+
+
 SPINNAKER
+
 helm install --name spinnaker stable/spinnaker --timeout 600 -f spinnaker.yml
 navigate to k8s.spinnaker
 
+
+
 ARGO
+
 kubectl create namespace argo
 kubectl create rolebinding default-admin --clusterrole=admin --serviceaccount=default:default
 kubectl apply -n argo -f argo.yml          # pay attention to -n....
+kubectl port-forward -n argo svc/argo-ui 9999:80
 
-argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
-argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/coinflip.yaml
-argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/loops-maps.yaml
+navigate to localhost:9999
+
+
+cli is here:
+https://github.com/argoproj/argo/releases
+
 argo list
 argo get xxx-workflow-name-xxx
 argo logs xxx-pod-name-xxx #from get command above
+argo submit --watch argoworkflows/hello-world.yaml
+argo submit --watch argoworkflows/coinflip.yaml
+argo submit --watch argoworkflows/loops-maps.yaml
+
+
+
+ARGOCD
+
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f argocd.yml
+
+cli is here:
+https://github.com/argoproj/argo-cd/releases/tag/v1.3.0
+
+get password:
+kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2
+
+kubectl port-forward -n argocd svc/argocd-server 9998:80
+
+login with cli:
+argocd login <ARGOCD_SERVER>
+
+coryleeio@M05t35:~/Workspace/k8sdev$ argocd app list
+NAME  CLUSTER  NAMESPACE  PROJECT  STATUS  HEALTH  SYNCPOLICY  CONDITIONS  REPO  PATH  TARGET
+
+
+or login at localhost:9998
+
+
+argocd app create guestbook \
+  --repo https://github.com/argoproj/argocd-example-apps.git \
+  --path guestbook \
+  --dest-server https://kubernetes.default.svc \
+  --dest-namespace default
+
+
+
+
+
+
 
 EXTRAS
+
 helm upgrade jenkins stable/jenkins -f jenkins.yml
 helm upgrade prometheus stable/prometheus -f prometheus.yml
 helm upgrade grafana stable/grafana -f grafana.yml
