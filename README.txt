@@ -126,7 +126,29 @@ argocd app create guestbook \
   --repo https://github.com/argoproj/argocd-example-apps.git \
   --path guestbook \
   --dest-server https://kubernetes.default.svc \
-  --dest-namespace default
+  --dest-namespace default \
+  --sync-policy automated
+
+
+
+
+
+
+add a remote helm chart
+
+project default
+cluster in cluster
+namespace default
+repo url
+https://kubernetes-charts.storage.googleapis.com
+
+chart mysql
+version 1.6.0
+
+enable automated
+enable prune
+enable self heal
+
 
 
 
