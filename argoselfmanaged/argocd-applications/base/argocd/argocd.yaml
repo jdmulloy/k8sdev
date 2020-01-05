@@ -9,6 +9,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: argocd
-    repoURL: https://github.com/coryleeio/k8sdev/argoselfmanaged
+    path: argoselfmanaged/argocd
+    repoURL: https://github.com/coryleeio/k8sdev
     targetRevision: HEAD

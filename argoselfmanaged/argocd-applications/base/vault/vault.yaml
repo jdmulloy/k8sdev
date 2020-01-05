@@ -8,6 +8,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: vault
-    repoURL: https://github.com/coryleeio/k8sdev/argoselfmanaged
+    path: argoselfmanaged/vault
+    repoURL: https://github.com/coryleeio/k8sdev
     targetRevision: HEAD
