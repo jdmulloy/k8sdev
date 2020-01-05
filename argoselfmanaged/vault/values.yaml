@@ -1,0 +1,13 @@
+
+# Note these are one key deeper than you expect because we are passing these values to our dependency
+
+vault:
+  injector:
+    # True if you want to enable vault agent injection.
+    enabled: true
+
+    # image sets the repo and tag of the vault-k8s image to use for the injector.
+    image:
+      repository: "hashicorp/vault-k8s"
+      tag: "0.1.1"
+      pullPolicy: IfNotPresent

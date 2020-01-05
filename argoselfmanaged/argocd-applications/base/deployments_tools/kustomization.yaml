@@ -1,0 +1,5 @@
+bases: 
+  - ../argocd/
+  - ../vault
+namespace: argocd
+namePrefix: tools-

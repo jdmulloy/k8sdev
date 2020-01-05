@@ -1,0 +1,5 @@
+bases:
+  - ../argocd/
+  - ../vault
+  - ../mysql
+namespace: argocd

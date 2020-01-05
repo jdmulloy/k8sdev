@@ -1,0 +1,6 @@
+Generate the Application CRDs for argo to deploy things. use customize to generate these definitions for your cluster that is running argo, that'll create the appropriate argo CRDs for argo to deploy everything in that cluster, and the other ones.
+
+to check outputs:
+
+kubectl kustomize overlays/development/
+kubectl kustomize overlays/tools/

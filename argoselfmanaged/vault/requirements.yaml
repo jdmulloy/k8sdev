@@ -1,0 +1,5 @@
+dependencies:
+- name: vault
+  version: 0.3.1
+  repository: "file://../vault-helm-0.3.1"
+

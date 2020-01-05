@@ -1,0 +1,6 @@
+dependencies:
+- name: vault
+  repository: file://../vault-helm-0.3.1
+  version: 0.3.1
+digest: sha256:857613f500d30205869cbc84c24964539d5da86917bff238b5723124aeb25eca
+generated: "2020-01-05T00:15:10.167396613-05:00"

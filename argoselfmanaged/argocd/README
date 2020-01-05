@@ -1,0 +1,1 @@
+Generate the resources to deploy argo - done with kustomize so that cluster can be bootstrapped without helm.  Once argo is up it can deploy everything else using helm.. or anything that argocd supports

@@ -1,0 +1,4 @@
+resources:
+  - vault.yaml
+namespace: argocd
+

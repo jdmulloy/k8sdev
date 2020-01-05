@@ -1,0 +1,2 @@
+Generate argo CRDs for argo to deploy all the apps to its own cluster
+for local development

@@ -1,0 +1,7 @@
+bases:
+  - ../vault
+  - ../mysql
+namespace: argocd
+namePrefix: stage-
+patchesStrategicMerge:
+- mysql-values.yaml

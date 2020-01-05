@@ -1,0 +1,5 @@
+bases:
+- ../../base/deployments_tools/
+- ../../base/deployments_stage/
+- ../../base/deployments_prod/
+

@@ -1,0 +1,31 @@
+
+To use first deploy argocd to atleast one cluster:
+minikube start --vm-driver=kvm2 --memory=9000 --kubernetes-version=1.14.10
+
+Check the argo manifests then apply them
+(This one takes a second because of the remote manifest)
+
+To bootstrap an argocd cluster which manages atleast one other cluster and all the stuff it will manage do this:
+k apply -k argocd/
+k apply -k argocd-applications/overlays/development
+
+If you want to see the manifests try this:
+k kustomize argocd/
+k kustomize argocd-applications/overlays/development
+
+once argo is up it should manage the other deployments.
+
+then argo can use all the generated CRDs in the pipelines directory to manage all the clusters
+
+
+Access argo like normal by following the doc here: 
+https://argoproj.github.io/argo-cd/getting_started/#3-access-the-argo-cd-api-server
+
+or just do
+kubectl port-forward svc/argocd-server -n argocd 9998:443
+
+password is:
+kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2
+
+login at localhost:9998 
+with admin/the_pw_above
