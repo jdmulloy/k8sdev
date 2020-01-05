@@ -12,3 +12,5 @@ spec:
     path: argoselfmanaged/argocd
     repoURL: https://github.com/coryleeio/k8sdev
     targetRevision: HEAD
+  syncPolicy:
+    automated: {}
