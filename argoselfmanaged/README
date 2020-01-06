@@ -2,14 +2,11 @@
 To use first deploy argocd to atleast one cluster:
 minikube start --vm-driver=kvm2 --memory=9000 --kubernetes-version=1.14.10
 
-Check the argo manifests then apply them
-(This one takes a second because of the remote manifest)
-
 To bootstrap an argocd cluster which manages atleast one other cluster and all the stuff it will manage do this:
 k apply -k argocd/
 k apply -k argocd-applications/overlays/development
 
-If you want to see the manifests try this:
+If you want to render the manifests try this:
 k kustomize argocd/
 k kustomize argocd-applications/overlays/development
 
@@ -29,3 +26,19 @@ kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut
 
 login at localhost:9998 
 with admin/the_pw_above
+
+
+
+
+get to vault like so:
+k port-forward -n vault svc/vault 8200:8200
+
+
+http://localhost:8200
+
+to use cli you will need to export VAULT_ADDR='http://127.0.0.1:8200'
+^ this lets you talk without tls
+
+then vault login and pass in the root token
+
+it will remain sealed until you hit it the first time
