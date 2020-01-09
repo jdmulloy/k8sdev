@@ -38,13 +38,13 @@ jenkins:
       - git:4.0.0
       - job-dsl:1.74
       # if you update this, update plugin version below
-      - configuration-as-code:1.27
+      - configuration-as-code:1.30
       - blueocean:1.18.1
       - groovy:2.2
     JCasC:
       enabled: true
       # configuration-as-code version from above
-      pluginVersion: "1.27"
+      pluginVersion: "1.30"
       configScripts:
         # If you want to overwrite the message it has to be done in this JCasC script because
         # it is defined in the default values.yml for the chart.
