@@ -1,0 +1,3 @@
+- op: replace
+  path: /spec/helm/valueFiles/0
+  value: development-jenkins.yaml

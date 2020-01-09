@@ -130,7 +130,7 @@ master:
 agent:
   enabled: true
   image: "jenkins/jnlp-slave"
-  tag: "3.29-1-alpine"
+  tag: "3.27-1"
   resources:
     requests:
       cpu: "200m"

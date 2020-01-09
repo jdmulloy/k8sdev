@@ -1,0 +1,4 @@
+resources:
+  - jenkins.yaml
+namespace: argocd
+

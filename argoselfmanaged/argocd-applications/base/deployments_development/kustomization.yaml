@@ -2,4 +2,13 @@ bases:
   - ../argocd/
   - ../vault
   - ../mysql
+  - ../jenkins
 namespace: argocd
+
+patchesJSON6902:
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: jenkins
+  path: jenkins-patch.yaml
