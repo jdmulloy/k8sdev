@@ -1,6 +1,6 @@
 
 To use first deploy argocd to atleast one cluster:
-minikube start --vm-driver=kvm2 --memory=9000 --kubernetes-version=1.14.10
+minikube start --vm-driver=kvm2 --memory=9000 --kubernetes-version=1.14.10 cpus=4
 
 To bootstrap an argocd cluster which manages atleast one other cluster and all the stuff it will manage do this:
 k apply -k argocd/
