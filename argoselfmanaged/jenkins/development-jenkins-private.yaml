@@ -40,6 +40,8 @@ jenkins:
       - configuration-as-code:1.34
       - blueocean:1.21.0
       - groovy:2.2
+      - build-publisher:1.22
+      - hashicorp-vault-plugin:3.0.0
     JCasC:
       enabled: true
       # configuration-as-code version from above
