@@ -2,23 +2,23 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: jenkins
+  name: jenkins-public
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jenkins
+  name: jenkins-public
 spec:
   destination:
-    namespace: jenkins
+    namespace: jenkins-public
     server: https://kubernetes.default.svc
   project: default
   source:
     path: argoselfmanaged/jenkins
     repoURL: https://github.com/coryleeio/k8sdev
-    targetRevision: HEAD
+    targetRevision: publicprivate
     helm:
       valueFiles:
-        - values.yaml
+        - development-jenkins-public.yaml
   syncPolicy:
     automated: {}

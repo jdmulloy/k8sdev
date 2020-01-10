@@ -2,20 +2,23 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: vault
+  name: jenkins-private
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vault
+  name: jenkins-private
 spec:
   destination:
-    namespace: vault
+    namespace: jenkins-private
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: argoselfmanaged/vault
+    path: argoselfmanaged/jenkins
     repoURL: https://github.com/coryleeio/k8sdev
     targetRevision: publicprivate
+    helm:
+      valueFiles:
+        - development-jenkins-private.yaml
   syncPolicy:
     automated: {}

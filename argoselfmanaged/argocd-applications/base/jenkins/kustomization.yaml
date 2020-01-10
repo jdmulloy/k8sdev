@@ -1,4 +1,5 @@
 resources:
-  - jenkins.yaml
+  - jenkins-private.yaml
+  - jenkins-public.yaml
 namespace: argocd
 

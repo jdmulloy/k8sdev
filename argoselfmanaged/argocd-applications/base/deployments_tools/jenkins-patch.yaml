@@ -1,3 +1,0 @@
-- op: replace
-  path: /spec/source/helm/valueFiles/0
-  value: tools-jenkins.yaml

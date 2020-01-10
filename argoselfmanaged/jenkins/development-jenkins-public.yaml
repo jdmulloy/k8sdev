@@ -19,8 +19,8 @@ jenkins:
     
     ingress:
       enabled: true
-      hostName: k8s.local
-      path: /jenkins
+      hostName: jenkins.public
+      path: /
 
 
     # Setting this to ClusterIP means to reach our Jenkins from outside the cluster
