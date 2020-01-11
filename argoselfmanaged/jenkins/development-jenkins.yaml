@@ -10,8 +10,8 @@ jenkins:
     # afraid of over provisioning.
     javaOpts: '-Xmx512m -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85'
     
-    jenkinsUrl: "http://k8s.local/jenkins"
-    jenkinsUriPrefix: "/jenkins"
+    jenkinsUrl: "https://jenkins.local"
+    jenkinsUriPrefix: ""
 
     # You still want some executors even if you aren't using them much. Remove this if you want to wait multiple minutes for your
     # builds to start
@@ -19,8 +19,8 @@ jenkins:
     
     ingress:
       enabled: true
-      hostName: k8s.local
-      path: /jenkins
+      hostName: jenkins.local
+      path: /
 
 
     # Setting this to ClusterIP means to reach our Jenkins from outside the cluster
