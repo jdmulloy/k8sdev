@@ -31,7 +31,7 @@ jenkins:
     overwritePlugins: true
       # List of plugins to be install during Jenkins master start
     installPlugins:
-      - kubernetes:1.22.5
+      - kubernetes:1.21.2
       - workflow-job:2.36
       - workflow-aggregator:2.6
       - credentials-binding:1.20
