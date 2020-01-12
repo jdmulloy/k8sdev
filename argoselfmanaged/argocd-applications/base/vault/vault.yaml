@@ -18,4 +18,5 @@ spec:
     repoURL: https://github.com/coryleeio/k8sdev
     targetRevision: HEAD
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
