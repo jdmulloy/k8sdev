@@ -12,5 +12,5 @@ spec:
     path: argoselfmanaged/argocd-applications/overlays/development
     repoURL: https://github.com/coryleeio/k8sdev
     targetRevision: HEAD
-  syncPolicy:
-    automated: {}
+syncPolicy:
+  automated: {}
