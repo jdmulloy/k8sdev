@@ -2,6 +2,7 @@ bases:
 - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v1.3.6
 resources:
   - argocd-ns.yaml
+  - argocd-ns.yaml
 namespace: argocd
 # additional resources like ingress rules, cluster and repository secrets.
 # resources:
