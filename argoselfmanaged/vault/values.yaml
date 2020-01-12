@@ -11,3 +11,6 @@ vault:
       repository: "hashicorp/vault-k8s"
       tag: "0.1.1"
       pullPolicy: IfNotPresent
+
+dev:
+  enabled: true
