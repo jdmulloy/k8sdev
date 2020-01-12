@@ -1,2 +1,4 @@
 bases:
 - ../../base/deployments_development/
+resources:
+- meta-pipeline.yaml
