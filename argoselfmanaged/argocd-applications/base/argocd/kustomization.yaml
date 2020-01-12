@@ -1,4 +1,5 @@
 ---
 resources:
+  - argocd.yaml
   - meta-pipeline.yaml
 namespace: argocd
