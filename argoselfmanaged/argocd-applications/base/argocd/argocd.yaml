@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: argoselfmanaged/argocd
-    repoURL: https://github.com/coryleeio/k8sdev
+    repoURL: https://github.com/jdmulloy/k8sdev
     targetRevision: HEAD
   syncPolicy:
     automated: {}

@@ -67,7 +67,7 @@ jenkins:
             - script: >
                 job('Seed Job') {
                     scm {
-                        git('git://github.com/coryleeio/testdsl.git')
+                        git('git://github.com/jdmulloy/testdsl.git')
                     }
                     triggers {
                         scm('H/15 * * * *')
